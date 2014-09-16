@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var b = require('bonescript');
 //Variables
-var mSize = 8;
+var mSize = 20;
 var panel = new Array(mSize);
 var curr_row = 0;
 var curr_col = 0;
