@@ -1,0 +1,73 @@
+
+U-Boot SPL 2014.07-00016-g329fca9 (Jul 28 2014 - 12:35:02)
+
+
+U-Boot 2014.07-00016-g329fca9 (Jul 28 2014 - 12:35:02), Build: jenkins-github_Bootloader-Builder-375
+
+I2C:   ready
+DRAM:  512 MiB
+NAND:  0 MiB
+MMC:   OMAP SD/MMC: 0, OMAP SD/MMC: 1
+*** Warning - readenv() failed, using default environment
+
+Net:   <ethaddr> not set. Validating first E-fuse MAC
+cpsw, usb_ether
+Hit any key to stop autoboot:  1  0 
+gpio: pin 53 (gpio 53) value is 1
+switch to partitions #0, OK
+mmc0 is current device
+gpio: pin 54 (gpio 54) value is 1
+SD/MMC found on device 0
+Checking for: /uEnv.txt ...
+reading uEnv.txt
+685 bytes read in 5 ms (133.8 KiB/s)
+gpio: pin 55 (gpio 55) value is 1
+Loaded environment from uEnv.txt
+Importing environment from mmc ...
+Checking if uenvcmd is set ...
+gpio: pin 56 (gpio 56) value is 1
+Running uenvcmd ...
+777 bytes read in 27 ms (27.3 KiB/s)
+5506224 bytes read in 326 ms (16.1 MiB/s)
+** File not found /boot/initrd.img-3.8.13-alex1 **
+26098 bytes read in 37 ms (688.5 KiB/s)
+Kernel image @ 0x82000000 [ 0x000000 - 0x5404b0 ]
+## Flattened Device Tree blob at 88000000
+   Booting using the fdt blob at 0x88000000
+   Loading Ramdisk to 8fabf000, end 8ffff4b0 ... OK
+   Loading Device Tree to 8fab5000, end 8fabe5f1 ... OK
+
+Starting kernel ...
+
+Uncompressing Linux... done, booting the kernel.
+[    0.204100] omap2_mbox_probe: platform not supported
+[    0.360579] tps65217-bl tps65217-bl: no platform data provided
+[    0.423506] bone-capemgr bone_capemgr.9: slot #0: No cape found
+[    0.460613] bone-capemgr bone_capemgr.9: slot #1: No cape found
+[    0.497720] bone-capemgr bone_capemgr.9: slot #2: No cape found
+[    0.534829] bone-capemgr bone_capemgr.9: slot #3: No cape found
+[    0.553515] omap_hsmmc mmc.5: of_parse_phandle_with_args of 'reset' failed
+[    0.615188] pinctrl-single 44e10800.pinmux: pin 44e10854 already requested by 44e10800.pinmux; cannot claim for gpio-leds.8
+[    0.626885] pinctrl-single 44e10800.pinmux: pin-21 (gpio-leds.8) status -22
+[    0.634181] pinctrl-single 44e10800.pinmux: could not request pin 21 on device pinctrl-single
+systemd-fsck[95]: rootfs: clean, 86038/230608 files, 474520/943104 blocks
+
+Debian GNU/Linux 7 beaglebone ttyO0
+
+default username:password is [debian:temppwd]
+
+Support/FAQ: http://elinux.org/Beagleboard:BeagleBoneBlack_Debian
+
+The IP Address for usb0 is: 192.168.7.2
+beaglebone login: root
+Last login: Wed Sep  3 23:36:35 UTC 2014 from 192.168.7.1 on pts/0
+Linux beaglebone 3.8.13-alex1 #2 SMP Thu Oct 16 13:53:36 EDT 2014 armv7l
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+root@beaglebone:~# [   19.170965] libphy: PHY 4a101000.mdio:01 not found
+[   19.176266] net eth0: phy 4a101000.mdio:01 not found on slave 1
