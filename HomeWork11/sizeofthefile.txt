@@ -1,0 +1,15 @@
+//Default:
+root@beaglebone:/busybox# du -h busybox
+690K	busybox
+//Reduced:
+root@beaglebone:/busybox# du -h busybox
+180K	busybox
+//ls:
+root@beaglebone:/busybox# du -h busybox
+20K	busybox
+//ls+httpd:
+root@beaglebone:/busybox# du -h busybox
+37K	busybox
+//ls+httpd+static_linking:
+root@beaglebone:/busybox# du -h busybox
+50K	busybox
