@@ -1,0 +1,119 @@
+From e9613f238da2c164261b7d700e259975e5f5e3f7 Mon Oct 27 17:35:00 2014
+From: silva caio<vianadcc@rose-hulman.edu>
+Date: Mon, 27 Oct 2014 18:06:06 -0400
+Subject: [PATCH 1/2] Files for hello1 kernel module
+
+---
+ drivers/char/Kconfig           |  8 ++++++++
+ drivers/char/Makefile          |  1 +
+ drivers/char/examples/Makefile | 13 +++++++++++++
+ drivers/char/examples/hello1.c | 21 +++++++++++++++++++++
+ 4 files changed, 43 insertions(+)
+ create mode 100644 drivers/char/examples/Makefile
+ create mode 100644 drivers/char/examples/hello1.c
+
+diff --git a/drivers/char/Kconfig b/drivers/char/Kconfig
+index 72bedad..8de812c 100644
+--- a/drivers/char/Kconfig
++++ b/drivers/char/Kconfig
+@@ -6,6 +6,14 @@ menu "Character devices"
+ 
+ source "drivers/tty/Kconfig"
+ 
++
++config EXAMPLES
++	tristate "Enable Examples"
++	default m
++	---help---
++	  Enable compilation option for Embedded Linux Primer
++          driver examples
++
+ config DEVKMEM
+ 	bool "/dev/kmem virtual device support"
+ 	default y
+diff --git a/drivers/char/Makefile b/drivers/char/Makefile
+index 7ff1d0d..dcc0d6b 100644
+--- a/drivers/char/Makefile
++++ b/drivers/char/Makefile
+@@ -53,6 +53,7 @@ obj-$(CONFIG_MWAVE)		+= mwave/
+ obj-$(CONFIG_AGP)		+= agp/
+ obj-$(CONFIG_PCMCIA)		+= pcmcia/
+ 
++obj-$(CONFIG_EAMPLES)           += examples/
+ obj-$(CONFIG_HANGCHECK_TIMER)	+= hangcheck-timer.o
+ obj-$(CONFIG_TCG_TPM)		+= tpm/
+ 
+diff --git a/drivers/char/examples/Makefile b/drivers/char/examples/Makefile
+new file mode 100644
+index 0000000..3ca1653
+--- /dev/null
++++ b/drivers/char/examples/Makefile
+@@ -0,0 +1,13 @@
++# Makefile for compiling out-of-tree
++# From Free Electrons
++
++ifneq ($(KERNELRELEASE),)
++obj-$(CONFIG_EXAMPLES) += hello1.o
++#obj-$(CONFIG_EXAMPLES) += hello2.o
++#obj-$(CONFIG_EXAMPLES) += hello3.o
++else
++KDIR := ~/BeagleBoard/bb-kernel/KERNEL
++
++all:
++	$(MAKE) -C $(KDIR) M=$$PWD
++endif
+diff --git a/drivers/char/examples/hello1.c b/drivers/char/examples/hello1.c
+new file mode 100644
+index 0000000..17ec4b2
+--- /dev/null
++++ b/drivers/char/examples/hello1.c
+@@ -0,0 +1,21 @@
++/* Example Minimal Character Device Driver */
++#include <linux/module.h>
++
++static int __init hello_init(void)
++{
++    printk(KERN_INFO "Hello Example Init\n");
++
++    return 0;
++}
++
++static void __exit hello_exit(void)
++{
++    printk(KERN_INFO "Hello Example Exit\n");
++}
++
++module_init(hello_init);
++module_exit(hello_exit);
++
++MODULE_AUTHOR("Caio Silva");
++MODULE_DESCRIPTION("Hello World Example");
++MODULE_LICENSE("GPL");
+-- 
+1.9.1
+
+
+From e9613f238da2c164261b7d700e259975e5f5e3f7 Mon Oct 27 17:35:00 2014
+From: silva caio <vianadcc@rose-hulman.edu>
+Date: Mon, 27 Oct 2014 18:20:33 -0400
+Subject: [PATCH 2/2] Files for hello1 kernel module
+
+---
+ drivers/char/examples/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/char/examples/Makefile b/drivers/char/examples/Makefile
+index 3ca1653..f11e261 100644
+--- a/drivers/char/examples/Makefile
++++ b/drivers/char/examples/Makefile
+@@ -6,7 +6,7 @@ obj-$(CONFIG_EXAMPLES) += hello1.o
+ #obj-$(CONFIG_EXAMPLES) += hello2.o
+ #obj-$(CONFIG_EXAMPLES) += hello3.o
+ else
+-KDIR := ~/BeagleBoard/bb-kernel/KERNEL
++KDIR := ~/bb-kernel/KERNEL
+ 
+ all:
+ 	$(MAKE) -C $(KDIR) M=$$PWD
+-- 
+1.9.1
