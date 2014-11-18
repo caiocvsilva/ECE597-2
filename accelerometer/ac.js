@@ -67,7 +67,7 @@ function printY(x) {
     
     if (value < 4){
         resy=1;
-        exec("python example.py", puts);
+        exec("python y.py", puts);
     } else {
         resy=0;
         //  exec("cd ~/openpixelcontrol", puts);
@@ -89,7 +89,7 @@ function printZ(x) {
     
     if (value < 4){
         resz=1;
-        exec("python conway.py", puts);
+        exec("python z.py", puts);
     } else {
         resz=0;
         //  exec("cd ~/openpixelcontrol", puts);
